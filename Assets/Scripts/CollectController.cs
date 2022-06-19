@@ -18,16 +18,23 @@ public class CollectController : MonoBehaviour
         if (other.gameObject.CompareTag("money"))
         {
             other.gameObject.transform.position = transform.position + Vector3.forward;
-            Destroy(gameObject.GetComponent<CollectController>());
+           Destroy( gameObject.GetComponent<CollectController>());
             other.gameObject.AddComponent<CollectController>();
             other.gameObject.GetComponent<BoxCollider>().isTrigger = false;
             other.gameObject.AddComponent<NodeMovement>();
             other.gameObject.GetComponent<NodeMovement>()._connectedNode = transform;
-            other.gameObject.tag = "Player";
+            //other.gameObject.tag = "Dolar";
             //_score++;
             //_scoreText.text = _score.ToString();
         }
+        if (other.gameObject.CompareTag("GoldMoney"))
+        {
+            other.gameObject.transform.position = transform.position + Vector3.forward;
+        }
+        if (other.gameObject.CompareTag("ElmasMoney"))
+        {
+            other.gameObject.transform.position = transform.position + Vector3.forward;
+        }
 
-        
     }
 }

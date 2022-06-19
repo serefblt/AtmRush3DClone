@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class ConvertMoney : MonoBehaviour
 {
 
-    [SerializeField] Material _gold , _elmas;
+    [SerializeField] Material _gold, _elmas;
     public static float _score = 0;
     [SerializeField] Text _scoreText;
 
     private void Update()
     {
         _scoreText.text = _score.ToString();
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +28,7 @@ public class ConvertMoney : MonoBehaviour
 
         if (other.gameObject.CompareTag("Gate2"))
         {
-            if (gameObject.tag == "Player")
+            if (gameObject.tag == "money")
             {
                 gameObject.tag = "GoldMoney2";
                 Gold();
@@ -39,12 +40,25 @@ public class ConvertMoney : MonoBehaviour
             }
            
         }
+        if (other.gameObject.CompareTag("money"))
+        {
+           
+            if (gameObject.CompareTag("money"))
+            {
+                _score += 0.5f;
+            }
+            else
+            {
+                _score++;
+            }
+            _scoreText.text = _score.ToString();
+        }
         if (other.gameObject.CompareTag("Player"))
         {
             _score++;
             _scoreText.text = _score.ToString();
         }
-    
+
 
     }
     void Gold()

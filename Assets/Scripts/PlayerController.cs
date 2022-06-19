@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     float _sinir;
     [SerializeField] GameObject _cam1, _cam2;
     [SerializeField] GameObject _scorPanel;
+    [SerializeField] Animator _animator;
     bool _startGame;
 
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            _animator.SetBool("__isRun", true);
             _startGame = true;
             _cam1.gameObject.SetActive(true);
             _cam2.gameObject.SetActive(false);
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_startGame == true)
         {
+            
             transform.Translate(new Vector3(Input.GetAxis("Horizontal") * _moveSpeed * Time.deltaTime, 0, _speed * Time.deltaTime));
             _sinir = transform.position.x;
             _sinir = Mathf.Clamp(_sinir, -4, +4);
