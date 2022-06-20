@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class CollectController : MonoBehaviour
 {
-    //public static float _score;
-    //[SerializeField] Text _scoreText;
-
-    //private void Update()
-    //{
-    //    _scoreText.text = _score.ToString();
-    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,9 +16,8 @@ public class CollectController : MonoBehaviour
             other.gameObject.GetComponent<BoxCollider>().isTrigger = false;
             other.gameObject.AddComponent<NodeMovement>();
             other.gameObject.GetComponent<NodeMovement>()._connectedNode = transform;
-            //other.gameObject.tag = "Dolar";
-            //_score++;
-            //_scoreText.text = _score.ToString();
+
+
         }
         if (other.gameObject.CompareTag("GoldMoney"))
         {

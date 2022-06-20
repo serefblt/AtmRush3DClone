@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _scorPanel;
     [SerializeField] Animator _animator;
     bool _startGame;
+    [SerializeField] Text _tapToPlayText;
 
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            _tapToPlayText.gameObject.SetActive(false);
             _animator.SetBool("__isRun", true);
             _startGame = true;
             _cam1.gameObject.SetActive(true);
